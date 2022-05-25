@@ -1,29 +1,24 @@
 import './App.css';
-import React from "react";
+import React, { useState } from "react";
+import Form from "./Components/Form"
 
-function App() {
-  return (
-    <form>
-      <label>First Name
-        <input 
-          name="first_name"
-          type="text"
-          value={form["first_name"]}
-          onChange={oncChange}
-          placeholder="First name..."
-        />
-      </label>
-      <label>Last Name
-        <input 
-          name="last_name"
-          type="text"
-          value={form["last_name"]}
-          onChange={oncChange}
-          placeholder="Last name..."
-        />
-      </label>
-    </form>
-  );
+const initialValues = {
+  first_name: "",
+  last_name: "",
+  email: "",
+  terms: false,
 }
 
-export default App;
+
+export default function App() {
+  
+  const [form, setForm] = useState(initialValues)
+
+  const inputChange = (name, value) => {
+    setForm({...form, [name]: value})
+  }
+
+  return (
+    <Form form={form} change={inputChange}/>
+  );
+}
