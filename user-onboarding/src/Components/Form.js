@@ -6,7 +6,8 @@ export default function Form(props) {
         form,
         change,
         disabled,
-        errors
+        errors,
+        submit
     } = props;
 
     const onChange = evt => {
@@ -14,9 +15,11 @@ export default function Form(props) {
         const valueToUse = type === "checkbox" ? checked : value;
         change(name, valueToUse);
     }
+
+
     
     return (
-        <form>
+        <form onSubmit={submit}>
             <div>
                 <div>{errors["first_name"]}</div>
                 <div>{errors["last_name"]}</div>
