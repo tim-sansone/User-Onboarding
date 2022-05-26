@@ -65,16 +65,25 @@ export default function App() {
 
   return (
     <>
-      <Form
-        form={form}
-        errors={errors}
-        disabled={disabled}
-        change={inputChange}
-        submit={submit}
-      />
-      {
-        users.map(user => <User user={user} />)
-      }
+      <header>
+        <h1>The Directory</h1>
+      </header>
+      <div className="container">
+        
+          <Form
+            form={form}
+            errors={errors}
+            disabled={disabled}
+            change={inputChange}
+            submit={submit}
+          />
+        
+        <div className="users">
+          {
+            users.map(user => <User user={user} key={user.id}/>)
+          }
+        </div>
+      </div>
     </>
   );
 }
