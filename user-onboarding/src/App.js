@@ -10,6 +10,8 @@ const initialForm = {
   first_name: "",
   last_name: "",
   email: "",
+  role: "",
+  meal: "",
   terms: false
 }
 
@@ -17,6 +19,8 @@ const initialErrors = {
   first_name: "",
   last_name: "",
   email: "",
+  role: "",
+  meal: "",
   terms: ""
 }
 
@@ -48,6 +52,8 @@ export default function App() {
       first_name: form["first_name"].trim(),
       last_name: form["last_name"].trim(),
       email: form.email.trim(),
+      role: form.role,
+      meal: form.meal,
       terms: form.terms
     }
 
@@ -57,6 +63,11 @@ export default function App() {
 
     setForm(initialForm);
 
+  }
+
+  const removeUser = id => {
+    const newUsers = users.filter(user => !(user.id === id))
+    setUsers(newUsers);
   }
 
   useEffect(() => {
@@ -80,7 +91,7 @@ export default function App() {
         
         <div className="users">
           {
-            users.map(user => <User user={user} key={user.id}/>)
+            users.map(user => <User user={user} key={user.id} remove={removeUser}/>)
           }
         </div>
       </div>
